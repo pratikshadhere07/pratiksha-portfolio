@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Developer Portfolio — UI/UX Design & High Performance Web Architecture Case Study by Pratiksha Dhere" />
+  <title>Developer Portfolio — Project Case Study</title>
+
+  <!-- Google Fonts & Font Awesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .case-hero {
+      padding: 130px 0 40px;
+      position: relative;
+    }
+    .back-nav-bar {
+      margin-bottom: 24px;
+    }
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--accent);
+      padding: 8px 16px;
+      border-radius: 30px;
+      background: rgba(6, 182, 212, 0.1);
+      border: 1px solid rgba(6, 182, 212, 0.25);
+      transition: all 0.3s var(--ease);
+    }
+    .back-btn:hover {
+      background: var(--accent);
+      color: #0b0f19;
+      transform: translateX(-4px);
+    }
+    .case-title {
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      margin-bottom: 16px;
+    }
+    .case-lead {
+      color: var(--text-muted);
+      font-size: 1.12rem;
+      max-width: 800px;
+      line-height: 1.8;
+      margin-bottom: 30px;
+    }
+    .case-banner {
+      width: 100%;
+      height: 420px;
+      border-radius: 20px;
+      overflow: hidden;
+      margin-bottom: 50px;
+      background: #090e17;
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow: var(--shadow-lg), var(--glow-primary);
+    }
+    .case-banner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .case-layout {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 36px;
+      margin-bottom: 70px;
+    }
+    .case-section-card {
+      padding: 32px;
+      margin-bottom: 28px;
+    }
+    .case-section-card h3 {
+      font-size: 1.35rem;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .case-section-card p {
+      color: var(--text-muted);
+      font-size: 0.96rem;
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+    .case-sidebar-card {
+      padding: 28px;
+      position: sticky;
+      top: 100px;
+    }
+    .sidebar-block {
+      margin-bottom: 24px;
+    }
+    .sidebar-block h4 {
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 10px;
+    }
+    @media (max-width: 860px) {
+      .case-layout { grid-template-columns: 1fr; }
+      .case-banner { height: 240px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <span class="logo-sym">&lt;</span>Pratiksha Dhere<span class="logo-sym">/&gt;</span>
+      </a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html#home">Home</a></li>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="index.html#skills">Skills</a></li>
+          <li><a href="index.html#projects" class="active">Projects</a></li>
+          <li><a href="index.html#experience">Experience</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <label class="hamburger-label" for="menu-toggle" aria-label="Toggle Menu">
+        <span></span><span></span><span></span>
+      </label>
+      <input type="checkbox" id="menu-toggle" class="menu-toggle" />
+      <nav class="mobile-nav">
+        <ul>
+          <li><a href="index.html#home">Home</a></li>
+          <li><a href="index.html#projects">Projects</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Project Hero -->
+  <main class="case-hero">
+    <div class="container">
+      
+      <div class="back-nav-bar">
+        <a href="index.html#projects" class="back-btn">
+          <i class="fas fa-arrow-left"></i> Back to All Projects
+        </a>
+      </div>
+
+      <div class="proj-tags" style="margin-bottom:14px">
+        <span class="ptag">Frontend Engineering</span>
+        <span class="ptag">UI/UX Design</span>
+        <span class="ptag">Pure CSS3</span>
+        <span class="ptag">Glassmorphism</span>
+      </div>
+
+      <h1 class="case-title font-display">Personal Developer Portfolio</h1>
+      <p class="case-lead">
+        A bespoke developer portfolio crafted with pure HTML5, modern CSS3 custom properties, glassmorphism cards, ambient neon glow aesthetics, and an accessible interactive project reporting subsystem.
+      </p>
+
+      <!-- Banner Mockup -->
+      <div class="case-banner">
+        <img src="assets/images/project-portfolio.svg" alt="Developer Portfolio Website Showcase" />
+      </div>
+
+      <!-- Main Layout -->
+      <div class="case-layout">
+        
+        <!-- Left: In-depth report -->
+        <div class="case-main">
+          
+          <div class="case-section-card glass-card">
+            <h3><i class="fas fa-paint-brush" style="color:#e879f9"></i> Design Philosophy &amp; Objective</h3>
+            <p>
+              Many developer portfolios rely on bloated JavaScript frameworks or off-the-shelf templates that lack distinct visual identity, inflate initial page load times, and complicate maintenance.
+            </p>
+            <p>
+              The objective of this project was to achieve an ultra-luxury, high-performance dark theme portfolio built on vanilla web standards. Every visual element—from ambient orbs and glowing borders to responsive grid layouts—was engineered for speed and visual impact.
+            </p>
+          </div>
+
+          <div class="case-section-card glass-card">
+            <h3><i class="fas fa-layer-group" style="color:var(--accent)"></i> Architecture &amp; Glassmorphism System</h3>
+            <p>
+              The design system leverages CSS variables for centralized theme tokens (`--primary`, `--accent`, `--grad-main`). Translucent cards incorporate `backdrop-filter: blur(20px)` paired with multi-layer box shadows and micro-interaction keyframes.
+            </p>
+            <p>
+              The interactive Project Details popup provides a seamless native modal experience with keyboard focus traps, outside-click detection, and body scroll locking while keeping the code clean, modular, and lightweight.
+            </p>
+          </div>
+
+          <div class="case-section-card glass-card">
+            <h3><i class="fas fa-star" style="color:#fbbf24"></i> Core Features</h3>
+            <ul class="modal-features-list">
+              <li class="modal-feature-item">
+                <i class="fas fa-check-circle"></i>
+                <span><strong>Luxury Dark Mode Aesthetics:</strong> Tailored purple, cyan, and violet gradients with glowing radial accents.</span>
+              </li>
+              <li class="modal-feature-item">
+                <i class="fas fa-check-circle"></i>
+                <span><strong>Interactive Project Popup Subsystem:</strong> Dynamic modal report with full responsiveness and keyboard accessibility.</span>
+              </li>
+              <li class="modal-feature-item">
+                <i class="fas fa-check-circle"></i>
+                <span><strong>Fluid 100% Responsive Grid:</strong> Seamlessly renders across mobile viewports, tablets, and high-DPI desktop screens.</span>
+              </li>
+              <li class="modal-feature-item">
+                <i class="fas fa-check-circle"></i>
+                <span><strong>Zero Bloat, High Performance:</strong> Lightweight semantic HTML with zero heavy framework overhead.</span>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+
+        <!-- Right: Sidebar Meta -->
+        <aside class="case-sidebar">
+          <div class="case-sidebar-card glass-card">
+            
+            <div class="sidebar-block">
+              <h4>Role &amp; Domain</h4>
+              <p style="color:#fff;font-weight:600">UI/UX Designer &amp; Frontend Dev</p>
+            </div>
+
+            <div class="sidebar-block">
+              <h4>Timeline</h4>
+              <p style="color:#fff;font-weight:600">2026</p>
+            </div>
+
+            <div class="sidebar-block">
+              <h4>Technology Stack</h4>
+              <div class="modal-tech-grid">
+                <span class="modal-tech-pill"><i class="fab fa-html5"></i> HTML5</span>
+                <span class="modal-tech-pill"><i class="fab fa-css3-alt"></i> CSS3</span>
+                <span class="modal-tech-pill"><i class="fab fa-js-square"></i> JavaScript</span>
+                <span class="modal-tech-pill"><i class="fas fa-paint-brush"></i> UI/UX</span>
+                <span class="modal-tech-pill"><i class="fas fa-icons"></i> Font Awesome</span>
+              </div>
+            </div>
+
+            <div class="sidebar-block" style="margin-top:30px">
+              <a href="https://github.com/pratikshadhere07" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-full">
+                <i class="fab fa-github"></i> View on GitHub
+              </a>
+              <a href="index.html#projects" class="btn btn-outline btn-full" style="margin-top:10px">
+                <i class="fas fa-arrow-left"></i> All Projects
+              </a>
+            </div>
+
+          </div>
+        </aside>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom" style="border-top:1px solid rgba(255,255,255,0.06);padding-top:20px;text-align:center">
+        <p>&copy; 2026 Pratiksha Dhere. All rights reserved. Built with pure modern code.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

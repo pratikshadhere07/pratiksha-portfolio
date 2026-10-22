@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Ethical Email Tracking & Cyber Security — Threat Intelligence Case Study by Pratiksha Dhere" />
+  <title>SmartShield Email Security — Project Case Study</title>
+
+  <!-- Google Fonts & Font Awesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .case-hero {
+      padding: 130px 0 40px;
+      position: relative;
+    }
+    .back-nav-bar {
+      margin-bottom: 24px;
+    }
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--accent);
+      padding: 8px 16px;
+      border-radius: 30px;
+      background: rgba(6, 182, 212, 0.1);
+      border: 1px solid rgba(6, 182, 212, 0.25);
+      transition: all 0.3s var(--ease);
+    }
+    .back-btn:hover {
+      background: var(--accent);
+      color: #0b0f19;
+      transform: translateX(-4px);
+    }
+    .case-title {
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      margin-bottom: 16px;
+    }
+    .case-lead {
+      color: var(--text-muted);
+      font-size: 1.12rem;
+      max-width: 800px;
+      line-height: 1.8;
+      margin-bottom: 30px;
+    }
+    .case-banner {
+      width: 100%;
+      height: 420px;
+      border-radius: 20px;
+      overflow: hidden;
+      margin-bottom: 50px;
+      background: #090e17;
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow: var(--shadow-lg), 0 0 30px rgba(16, 185, 129, 0.25);
+    }
+    .case-banner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .case-layout {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 36px;
+      margin-bottom: 70px;
+    }
+    .case-section-card {
+      padding: 32px;
+      margin-bottom: 28px;
+    }
+    .case-section-card h3 {
+      font-size: 1.35rem;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .case-section-card p {
+      color: var(--text-muted);
+      font-size: 0.96rem;
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+    .case-sidebar-card {
+      padding: 28px;
+      position: sticky;
+      top: 100px;
+    }
+    .sidebar-block {
+      margin-bottom: 24px;
+    }
+    .sidebar-block h4 {
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 10px;
+    }
+    @media (max-width: 860px) {
+      .case-layout { grid-template-columns: 1fr; }
+      .case-banner { height: 240px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <span class="logo-sym">&lt;</span>Pratiksha Dhere<span class="logo-sym">/&gt;</span>
+      </a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html#home">Home</a></li>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="index.html#skills">Skills</a></li>
+          <li><a href="index.html#projects" class="active">Projects</a></li>
+          <li><a href="index.html#experience">Experience</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <label class="hamburger-label" for="menu-toggle" aria-label="Toggle Menu">
+        <span></span><span></span><span></span>
+      </label>
+      <input type="checkbox" id="menu-toggle" class="menu-toggle" />
+      <nav class="mobile-nav">
+        <ul>
+          <li><a href="index.html#home">Home</a></li>
+          <li><a href="index.html#projects">Projects</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Project Hero -->
+  <main class="case-hero">
+    <div class="container">
+      
+      <div class="back-nav-bar">
+        <a href="index.html#projects" class="back-btn">
+          <i class="fas fa-arrow-left"></i> Back to All Projects
+        </a>
+      </div>
+
+      <div class="proj-tags" style="margin-bottom:14px">
+        <span class="ptag">Cybersecurity</span>
+        <span class="ptag">Python 3.11</span>
+        <span class="ptag">Machine Learning</span>
+        <span class="ptag">Web Scraping</span>
+      </div>
+
+      <h1 class="case-title font-display">Ethical Email Tracking &amp; Cyber Threat Detection</h1>
+      <p class="case-lead">
+        An advanced cybersecurity platform combining forensic MIME header inspection, multi-hop web scraping, and machine learning heuristics to detect phishing, spoofed senders, and covert tracking pixels.
+      </p>
+
+      <!-- Banner Mockup -->
+      <div class="case-banner">
+        <img src="assets/images/project-email-tracker.svg" alt="Ethical Email Tracking and Cyber Security System" />
+      </div>
+
+      <!-- Main Layout -->
+      <div class="case-layout">
+        
+        <!-- Left: In-depth report -->
+        <div class="case-main">
+          
+          <div class="case-section-card glass-card">
+            <h3><i class="fas fa-shield-alt" style="color:#10b981"></i> The Cybersecurity Challenge</h3>
+            <p>
+              Invasive email surveillance has proliferated through zero-pixel tracking beacons, obfuscated redirect chains, and deceptive phishing templates. Standard perimeter mail scanners often inspect only SPF/DKIM records without parsing the actual deep-linked payloads within the email body.
+            </p>
+            <p>
+              Users unknowingly reveal their IP addresses, geographic locations, device types, and opening timestamps simply by rendering emails, while advanced phishing links bypass static rule lists.
+            </p>
+          </div>
+
+          <div class="case-section-card glass-card">
+            <h3><i class="fas fa-microchip" style="color:var(--accent)"></i> The Engineering Solution</h3>
+            <p>
+              SmartShield was designed as a dual-stage defensive forensic engine. In Stage 1, a Python-powered MIME parser dissects incoming headers, strips tracking tags, and routes every embedded URL into a sandboxed headless crawler.
+            </p>
+            <p>
+              In Stage 2, the crawler resolves domain age, SSL issuance records, and canonical redirects. A Scikit-Learn trained machine learning classifier evaluates these features against known malicious patterns to output a real-time Threat Probability Score.
+            </p>
+          </div>
+
+          <div class="case-section-card glass-card">
+            <h3><i class="fas fa-star" style="color:#fbbf24"></i> Core Features</h3>
+            <ul class="modal-features-list">
+              <li class="modal-feature-item">
+                <i class="fas fa-check-circle"></i>
+                <span><strong>Tracking Beacon Disinfection:</strong> Automatically detects and nullifies hidden 1x1 image pixels and tracking scripts.</span>
+              </li>
+              <li class="modal-feature-item">
+                <i class="fas fa-check-circle"></i>
+                <span><strong>Multi-Hop Link Traversal:</strong> Unrolls URL shorteners and redirect chains to identify true destination hosts.</span>
+              </li>
+              <li class="modal-feature-item">
+                <i class="fas fa-check-circle"></i>
+                <span><strong>Machine Learning Phishing Classifier:</strong> Evaluates lexical, domain, and body heuristics for 96%+ classification accuracy.</span>
+              </li>
+              <li class="modal-feature-item">
+                <i class="fas fa-check-circle"></i>
+                <span><strong>Forensic Audit Telemetry:</strong> Generates real-time risk reports and domain provenance analytics.</span>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+
+        <!-- Right: Sidebar Meta -->
+        <aside class="case-sidebar">
+          <div class="case-sidebar-card glass-card">
+            
+            <div class="sidebar-block">
+              <h4>Role &amp; Domain</h4>
+              <p style="color:#fff;font-weight:600">Security Researcher &amp; Python Dev</p>
+            </div>
+
+            <div class="sidebar-block">
+              <h4>Timeline</h4>
+              <p style="color:#fff;font-weight:600">Active Research (2025 – Present)</p>
+            </div>
+
+            <div class="sidebar-block">
+              <h4>Technology Stack</h4>
+              <div class="modal-tech-grid">
+                <span class="modal-tech-pill"><i class="fab fa-python"></i> Python 3.11</span>
+                <span class="modal-tech-pill"><i class="fas fa-robot"></i> Scikit-Learn</span>
+                <span class="modal-tech-pill"><i class="fas fa-spider"></i> BeautifulSoup4</span>
+                <span class="modal-tech-pill"><i class="fas fa-server"></i> Flask API</span>
+                <span class="modal-tech-pill"><i class="fas fa-shield-alt"></i> Cyber Forensics</span>
+              </div>
+            </div>
+
+            <div class="sidebar-block" style="margin-top:30px">
+              <a href="https://github.com/pratikshadhere07" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-full">
+                <i class="fab fa-github"></i> View on GitHub
+              </a>
+              <a href="index.html#projects" class="btn btn-outline btn-full" style="margin-top:10px">
+                <i class="fas fa-arrow-left"></i> All Projects
+              </a>
+            </div>
+
+          </div>
+        </aside>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom" style="border-top:1px solid rgba(255,255,255,0.06);padding-top:20px;text-align:center">
+        <p>&copy; 2026 Pratiksha Dhere. All rights reserved. Built with pure modern code.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

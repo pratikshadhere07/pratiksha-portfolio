@@ -1,0 +1,138 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="100%" height="100%">
+  <defs>
+    <linearGradient id="queue-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a1322" />
+      <stop offset="50%" stop-color="#0e1f38" />
+      <stop offset="100%" stop-color="#060d1a" />
+    </linearGradient>
+    <linearGradient id="token-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="50%" stop-color="#6366f1" />
+      <stop offset="100%" stop-color="#a855f7" />
+    </linearGradient>
+    <radialGradient id="queue-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.25" />
+      <stop offset="100%" stop-color="#38bdf8" stop-opacity="0" />
+    </radialGradient>
+    <filter id="queue-shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="10" stdDeviation="15" flood-color="#000000" flood-opacity="0.6" />
+    </filter>
+  </defs>
+
+  <rect width="800" height="450" fill="url(#queue-bg)" />
+
+  <!-- Background grid lines -->
+  <g opacity="0.06" stroke="#38bdf8" stroke-width="1">
+    <line x1="0" y1="50" x2="800" y2="50" /><line x1="0" y1="100" x2="800" y2="100" />
+    <line x1="0" y1="150" x2="800" y2="150" /><line x1="0" y1="200" x2="800" y2="200" />
+    <line x1="0" y1="250" x2="800" y2="250" /><line x1="0" y1="300" x2="800" y2="300" />
+    <line x1="0" y1="350" x2="800" y2="350" /><line x1="0" y1="400" x2="800" y2="400" />
+    <line x1="100" y1="0" x2="100" y2="450" /><line x1="200" y1="0" x2="200" y2="450" />
+    <line x1="300" y1="0" x2="300" y2="450" /><line x1="400" y1="0" x2="400" y2="450" />
+    <line x1="500" y1="0" x2="500" y2="450" /><line x1="600" y1="0" x2="600" y2="450" />
+    <line x1="700" y1="0" x2="700" y2="450" />
+  </g>
+
+  <circle cx="400" cy="225" r="230" fill="url(#queue-glow)" />
+
+  <!-- Queue System Window -->
+  <g transform="translate(60, 35)" filter="url(#queue-shadow)">
+    <rect width="680" height="380" rx="16" fill="#0d1629" stroke="#1e293b" stroke-width="1.5" />
+
+    <!-- Window Header -->
+    <rect width="680" height="44" rx="16" fill="#131e36" />
+    <rect y="32" width="680" height="12" fill="#131e36" />
+    <line x1="0" y1="44" x2="680" y2="44" stroke="rgba(255,255,255,0.08)" stroke-width="1" />
+
+    <circle cx="24" cy="22" r="5" fill="#ef4444" />
+    <circle cx="40" cy="22" r="5" fill="#f59e0b" />
+    <circle cx="56" cy="22" r="5" fill="#10b981" />
+
+    <text x="80" y="27" fill="#f8fafc" font-family="'Outfit', sans-serif" font-size="13" font-weight="700">Q-Master • Smart Digital Token &amp; Queue Hub</text>
+
+    <rect x="520" y="11" width="140" height="22" rx="11" fill="rgba(56,189,248,0.15)" stroke="rgba(56,189,248,0.3)" />
+    <circle cx="534" cy="22" r="4" fill="#38bdf8" />
+    <text x="546" y="26" fill="#7dd3fc" font-family="'Outfit', sans-serif" font-size="9" font-weight="700">4 COUNTERS ONLINE</text>
+
+    <!-- Layout: Main Active Token Display (Left) + Queue Line & Counter Stats (Right) -->
+    <!-- Left Hero: NOW CALLING DISPLAY -->
+    <g transform="translate(24, 62)">
+      <rect width="330" height="295" rx="14" fill="#101a30" stroke="rgba(56,189,248,0.25)" />
+      
+      <!-- Top banner in card -->
+      <rect x="0" y="0" width="330" height="42" rx="14" fill="rgba(56,189,248,0.12)" />
+      <rect x="0" y="30" width="330" height="12" fill="rgba(56,189,248,0.12)" />
+      <circle cx="24" cy="21" r="5" fill="#10b981" />
+      <text x="36" y="25" fill="#38bdf8" font-family="'Outfit', sans-serif" font-size="11" font-weight="800" letter-spacing="1">NOW SERVING • LIVE CALLOUT</text>
+
+      <!-- Massive Token Number Display -->
+      <g transform="translate(20, 60)">
+        <text x="145" y="40" text-anchor="middle" fill="#94a3b8" font-family="'Outfit', sans-serif" font-size="12" font-weight="600" letter-spacing="2">TOKEN NUMBER</text>
+        <text x="145" y="105" text-anchor="middle" fill="url(#token-grad)" font-family="'Outfit', sans-serif" font-size="58" font-weight="900" letter-spacing="2">#A-142</text>
+        
+        <!-- Target Counter -->
+        <rect x="25" y="125" width="240" height="44" rx="10" fill="rgba(99,102,241,0.2)" stroke="rgba(99,102,241,0.4)" />
+        <text x="145" y="152" text-anchor="middle" fill="#f8fafc" font-family="'Outfit', sans-serif" font-size="14" font-weight="800">PROCEED TO COUNTER 3</text>
+
+        <!-- Service Details -->
+        <text x="145" y="195" text-anchor="middle" fill="#cbd5e1" font-family="'Outfit', sans-serif" font-size="10">Department: Cashier &amp; Billing • Priority Queue</text>
+        <rect x="55" y="206" width="180" height="20" rx="6" fill="rgba(16,185,129,0.15)" />
+        <text x="145" y="220" text-anchor="middle" fill="#34d399" font-family="'Outfit', sans-serif" font-size="9" font-weight="700">Audio Broadcast Chime Dispatched</text>
+      </g>
+    </g>
+
+    <!-- Right Column: Queue Waiting Line & Live Counters -->
+    <g transform="translate(372, 62)">
+      <!-- Next In Line Board -->
+      <rect width="284" height="155" rx="12" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.06)" />
+      <text x="16" y="24" fill="#94a3b8" font-family="'Outfit', sans-serif" font-size="10" font-weight="700" letter-spacing="1">NEXT IN LINE (QUEUE BOARD)</text>
+
+      <!-- Queue Row 1 -->
+      <g transform="translate(14, 38)">
+        <rect width="256" height="32" rx="8" fill="#131e36" stroke="rgba(255,255,255,0.05)" />
+        <text x="14" y="21" fill="#f8fafc" font-family="'Outfit', sans-serif" font-size="12" font-weight="700">#A-143</text>
+        <text x="90" y="20" fill="#94a3b8" font-family="'Outfit', sans-serif" font-size="9">General Inquiry</text>
+        <rect x="186" y="7" width="58" height="18" rx="4" fill="rgba(56,189,248,0.15)" />
+        <text x="194" y="20" fill="#38bdf8" font-family="'Outfit', sans-serif" font-size="8" font-weight="700">~2 mins</text>
+      </g>
+
+      <!-- Queue Row 2 -->
+      <g transform="translate(14, 76)">
+        <rect width="256" height="32" rx="8" fill="#131e36" stroke="rgba(255,255,255,0.05)" />
+        <text x="14" y="21" fill="#f8fafc" font-family="'Outfit', sans-serif" font-size="12" font-weight="700">#B-089</text>
+        <text x="90" y="20" fill="#94a3b8" font-family="'Outfit', sans-serif" font-size="9">Express Desk</text>
+        <rect x="186" y="7" width="58" height="18" rx="4" fill="rgba(56,189,248,0.15)" />
+        <text x="194" y="20" fill="#38bdf8" font-family="'Outfit', sans-serif" font-size="8" font-weight="700">~5 mins</text>
+      </g>
+
+      <!-- Queue Row 3 -->
+      <g transform="translate(14, 114)">
+        <rect width="256" height="32" rx="8" fill="#131e36" stroke="rgba(255,255,255,0.05)" />
+        <text x="14" y="21" fill="#f8fafc" font-family="'Outfit', sans-serif" font-size="12" font-weight="700">#A-144</text>
+        <text x="90" y="20" fill="#94a3b8" font-family="'Outfit', sans-serif" font-size="9">Cashier &amp; Billing</text>
+        <rect x="186" y="7" width="58" height="18" rx="4" fill="rgba(56,189,248,0.15)" />
+        <text x="194" y="20" fill="#38bdf8" font-family="'Outfit', sans-serif" font-size="8" font-weight="700">~8 mins</text>
+      </g>
+
+      <!-- Bottom Metric Cards -->
+      <g transform="translate(0, 170)">
+        <rect width="134" height="66" rx="10" fill="#10192e" stroke="rgba(255,255,255,0.06)" />
+        <text x="12" y="22" fill="#94a3b8" font-family="'Outfit', sans-serif" font-size="9" font-weight="600">AVG SERVICE TIME</text>
+        <text x="12" y="50" fill="#38bdf8" font-family="'Outfit', sans-serif" font-size="20" font-weight="800">3.8 min</text>
+
+        <g transform="translate(150, 0)">
+          <rect width="134" height="66" rx="10" fill="#10192e" stroke="rgba(255,255,255,0.06)" />
+          <text x="12" y="22" fill="#94a3b8" font-family="'Outfit', sans-serif" font-size="9" font-weight="600">TOKENS SERVED</text>
+          <text x="12" y="50" fill="#34d399" font-family="'Outfit', sans-serif" font-size="20" font-weight="800">248 Today</text>
+        </g>
+      </g>
+
+      <!-- Spring Boot & WebSocket Engine Footer -->
+      <g transform="translate(0, 248)">
+        <rect width="284" height="42" rx="8" fill="#090f1d" stroke="rgba(255,255,255,0.05)" />
+        <text x="12" y="18" fill="#818cf8" font-family="'Outfit', sans-serif" font-size="9" font-weight="700">Java Spring Boot + STOMP WebSockets</text>
+        <text x="12" y="32" fill="#64748b" font-family="'Outfit', sans-serif" font-size="8">Real-time sync latency: &lt; 45ms across all digital screens.</text>
+      </g>
+    </g>
+  </g>
+</svg>

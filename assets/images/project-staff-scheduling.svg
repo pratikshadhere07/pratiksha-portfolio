@@ -1,0 +1,167 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="100%" height="100%">
+  <defs>
+    <linearGradient id="staff-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b1120" />
+      <stop offset="50%" stop-color="#141a29" />
+      <stop offset="100%" stop-color="#070c18" />
+    </linearGradient>
+    <linearGradient id="accent-staff" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#6366f1" />
+    </linearGradient>
+    <radialGradient id="staff-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#6366f1" stop-opacity="0.25" />
+      <stop offset="100%" stop-color="#6366f1" stop-opacity="0" />
+    </radialGradient>
+    <filter id="staff-shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="10" stdDeviation="15" flood-color="#000000" flood-opacity="0.6" />
+    </filter>
+  </defs>
+
+  <rect width="800" height="450" fill="url(#staff-bg)" />
+
+  <!-- Grid overlay -->
+  <g opacity="0.06" stroke="#38bdf8" stroke-width="1">
+    <line x1="0" y1="60" x2="800" y2="60" /><line x1="0" y1="120" x2="800" y2="120" />
+    <line x1="0" y1="180" x2="800" y2="180" /><line x1="0" y1="240" x2="800" y2="240" />
+    <line x1="0" y1="300" x2="800" y2="300" /><line x1="0" y1="360" x2="800" y2="360" />
+    <line x1="100" y1="0" x2="100" y2="450" /><line x1="200" y1="0" x2="200" y2="450" />
+    <line x1="300" y1="0" x2="300" y2="450" /><line x1="400" y1="0" x2="400" y2="450" />
+    <line x1="500" y1="0" x2="500" y2="450" /><line x1="600" y1="0" x2="600" y2="450" />
+    <line x1="700" y1="0" x2="700" y2="450" />
+  </g>
+
+  <circle cx="400" cy="225" r="230" fill="url(#staff-glow)" />
+
+  <!-- Main Tablet/Desktop Application Mockup -->
+  <g transform="translate(65, 35)" filter="url(#staff-shadow)">
+    <rect width="670" height="380" rx="16" fill="#0f172a" stroke="#1e293b" stroke-width="1.5" />
+
+    <!-- Top App Navigation Bar -->
+    <rect width="670" height="46" rx="16" fill="#172033" />
+    <rect y="32" width="670" height="14" fill="#172033" />
+    <line x1="0" y1="46" x2="670" y2="46" stroke="rgba(255,255,255,0.08)" stroke-width="1" />
+
+    <!-- Brand & Role Header -->
+    <circle cx="28" cy="23" r="10" fill="#6366f1" />
+    <text x="24" y="27" fill="#ffffff" font-family="'Outfit', sans-serif" font-size="12" font-weight="800">S</text>
+    <text x="46" y="27" fill="#f8fafc" font-family="'Outfit', sans-serif" font-size="13" font-weight="700">StaffLink • Scheduling &amp; Governance</text>
+
+    <!-- Role Switcher -->
+    <g transform="translate(390, 11)">
+      <rect width="260" height="24" rx="12" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.08)" />
+      <rect x="2" y="2" width="80" height="20" rx="10" fill="#6366f1" />
+      <text x="24" y="16" fill="#ffffff" font-family="'Outfit', sans-serif" font-size="9" font-weight="700">Principal</text>
+      <text x="108" y="16" fill="#94a3b8" font-family="'Outfit', sans-serif" font-size="9" font-weight="600">HOD View</text>
+      <text x="194" y="16" fill="#94a3b8" font-family="'Outfit', sans-serif" font-size="9" font-weight="600">Faculty</text>
+    </g>
+
+    <!-- Content: Left Sidebar + Timetable Grid -->
+    <!-- Left Navigation Sidebar -->
+    <g transform="translate(18, 62)">
+      <rect width="160" height="295" rx="12" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.05)" />
+      
+      <!-- Nav Item Active -->
+      <rect x="8" y="12" width="144" height="32" rx="8" fill="rgba(99,102,241,0.2)" stroke="rgba(99,102,241,0.3)" />
+      <text x="24" y="32" fill="#818cf8" font-family="'Outfit', sans-serif" font-size="11" font-weight="700">Master Schedule</text>
+
+      <g transform="translate(8, 52)">
+        <rect width="144" height="30" rx="8" fill="transparent" />
+        <text x="16" y="20" fill="#94a3b8" font-family="'Outfit', sans-serif" font-size="10" font-weight="500">Leave Approvals (2)</text>
+      </g>
+      <g transform="translate(8, 88)">
+        <rect width="144" height="30" rx="8" fill="transparent" />
+        <text x="16" y="20" fill="#94a3b8" font-family="'Outfit', sans-serif" font-size="10" font-weight="500">Substitution Engine</text>
+      </g>
+      <g transform="translate(8, 124)">
+        <rect width="144" height="30" rx="8" fill="transparent" />
+        <text x="16" y="20" fill="#94a3b8" font-family="'Outfit', sans-serif" font-size="10" font-weight="500">Broadcast Notice</text>
+      </g>
+
+      <!-- Faculty Status Mini Box -->
+      <g transform="translate(8, 185)">
+        <rect width="144" height="98" rx="8" fill="#131d31" stroke="rgba(255,255,255,0.06)" />
+        <text x="12" y="20" fill="#f8fafc" font-family="'Outfit', sans-serif" font-size="10" font-weight="700">FACULTY STATUS</text>
+        <circle cx="16" cy="38" r="4" fill="#10b981" />
+        <text x="26" y="41" fill="#cbd5e1" font-family="'Outfit', sans-serif" font-size="9">42 Present</text>
+        <circle cx="16" cy="56" r="4" fill="#f59e0b" />
+        <text x="26" y="59" fill="#cbd5e1" font-family="'Outfit', sans-serif" font-size="9">3 On Duty / Tour</text>
+        <circle cx="16" cy="74" r="4" fill="#ef4444" />
+        <text x="26" y="77" fill="#cbd5e1" font-family="'Outfit', sans-serif" font-size="9">1 On Medical Leave</text>
+      </g>
+    </g>
+
+    <!-- Main Content Grid: Day schedule -->
+    <g transform="translate(194, 62)">
+      <!-- Header row of days -->
+      <rect width="456" height="34" rx="8" fill="rgba(255,255,255,0.03)" />
+      <text x="20" y="21" fill="#94a3b8" font-family="'Outfit', sans-serif" font-size="10" font-weight="700">TIME</text>
+      <text x="100" y="21" fill="#f8fafc" font-family="'Outfit', sans-serif" font-size="10" font-weight="700">MONDAY</text>
+      <text x="210" y="21" fill="#f8fafc" font-family="'Outfit', sans-serif" font-size="10" font-weight="700">TUESDAY</text>
+      <text x="320" y="21" fill="#f8fafc" font-family="'Outfit', sans-serif" font-size="10" font-weight="700">WEDNESDAY</text>
+
+      <!-- Slot 1: 09:00 - 10:30 -->
+      <g transform="translate(0, 42)">
+        <text x="14" y="32" fill="#64748b" font-family="'Outfit', sans-serif" font-size="9">09:00 AM</text>
+        <!-- Lecture Card 1 -->
+        <g transform="translate(85, 4)">
+          <rect width="105" height="46" rx="8" fill="rgba(99,102,241,0.18)" stroke="rgba(99,102,241,0.35)" />
+          <text x="8" y="16" fill="#f8fafc" font-family="'Outfit', sans-serif" font-size="9" font-weight="700">Android Dev</text>
+          <text x="8" y="28" fill="#a5b4fc" font-family="'Outfit', sans-serif" font-size="8">Lab 204 • Sem VI</text>
+          <text x="8" y="40" fill="#64748b" font-family="'Outfit', sans-serif" font-size="7">Prof. P. Dhere</text>
+        </g>
+        <!-- Lecture Card 2 -->
+        <g transform="translate(195, 4)">
+          <rect width="105" height="46" rx="8" fill="rgba(6,182,212,0.15)" stroke="rgba(6,182,212,0.3)" />
+          <text x="8" y="16" fill="#f8fafc" font-family="'Outfit', sans-serif" font-size="9" font-weight="700">Python AI Lab</text>
+          <text x="8" y="28" fill="#67e8f9" font-family="'Outfit', sans-serif" font-size="8">Room 302 • Sem IV</text>
+          <text x="8" y="40" fill="#64748b" font-family="'Outfit', sans-serif" font-size="7">HOD Approved</text>
+        </g>
+        <!-- Lecture Card 3 -->
+        <g transform="translate(305, 4)">
+          <rect width="140" height="46" rx="8" fill="rgba(245,158,11,0.15)" stroke="rgba(245,158,11,0.3)" />
+          <text x="8" y="16" fill="#f8fafc" font-family="'Outfit', sans-serif" font-size="9" font-weight="700">Faculty Sync</text>
+          <text x="8" y="28" fill="#fcd34d" font-family="'Outfit', sans-serif" font-size="8">Principal Conference</text>
+          <text x="8" y="40" fill="#64748b" font-family="'Outfit', sans-serif" font-size="7">All Dept Staff</text>
+        </g>
+      </g>
+
+      <!-- Slot 2: 11:00 - 12:30 -->
+      <g transform="translate(0, 104)">
+        <text x="14" y="32" fill="#64748b" font-family="'Outfit', sans-serif" font-size="9">11:00 AM</text>
+        <g transform="translate(85, 4)">
+          <rect width="105" height="46" rx="8" fill="rgba(16,185,129,0.15)" stroke="rgba(16,185,129,0.3)" />
+          <text x="8" y="16" fill="#f8fafc" font-family="'Outfit', sans-serif" font-size="9" font-weight="700">Database Mgmt</text>
+          <text x="8" y="28" fill="#6ee7b7" font-family="'Outfit', sans-serif" font-size="8">MySQL • Hall B</text>
+          <text x="8" y="40" fill="#64748b" font-family="'Outfit', sans-serif" font-size="7">Active Session</text>
+        </g>
+        <g transform="translate(195, 4)">
+          <rect width="105" height="46" rx="8" fill="rgba(99,102,241,0.18)" stroke="rgba(99,102,241,0.35)" />
+          <text x="8" y="16" fill="#f8fafc" font-family="'Outfit', sans-serif" font-size="9" font-weight="700">Project Review</text>
+          <text x="8" y="28" fill="#a5b4fc" font-family="'Outfit', sans-serif" font-size="8">Final Year Batch</text>
+          <text x="8" y="40" fill="#64748b" font-family="'Outfit', sans-serif" font-size="7">Lab 101</text>
+        </g>
+        <g transform="translate(305, 4)">
+          <rect width="140" height="46" rx="8" fill="rgba(255,255,255,0.05)" stroke="dashed rgba(255,255,255,0.15)" />
+          <text x="24" y="26" fill="#64748b" font-family="'Outfit', sans-serif" font-size="9">+ Assign Free Slot</text>
+        </g>
+      </g>
+
+      <!-- Bottom Resolution Banner -->
+      <g transform="translate(0, 175)">
+        <rect width="446" height="52" rx="10" fill="rgba(16,185,129,0.1)" stroke="rgba(16,185,129,0.25)" />
+        <circle cx="26" cy="26" r="12" fill="#10b981" />
+        <path d="M21 26 l4 4 l7 -7" stroke="#ffffff" stroke-width="2" fill="none" stroke-linecap="round" />
+        <text x="48" y="23" fill="#ffffff" font-family="'Outfit', sans-serif" font-size="11" font-weight="700">Smart Conflict Engine: 0 Overlaps Found</text>
+        <text x="48" y="38" fill="#94a3b8" font-family="'Outfit', sans-serif" font-size="9">Dynamic timetable synchronised across 45 faculty Android clients.</text>
+      </g>
+
+      <!-- Broadcast message preview -->
+      <g transform="translate(0, 240)">
+        <rect width="446" height="40" rx="8" fill="#131c31" stroke="rgba(255,255,255,0.06)" />
+        <text x="14" y="18" fill="#f8fafc" font-family="'Outfit', sans-serif" font-size="9" font-weight="700">Principal Circular: Staff meeting rescheduled to 3:00 PM</text>
+        <text x="14" y="32" fill="#94a3b8" font-family="'Outfit', sans-serif" font-size="8">Push notification delivered to HODs and faculty mobile devices.</text>
+      </g>
+    </g>
+  </g>
+</svg>
