@@ -178,10 +178,6 @@
     const solutionEl = document.getElementById('modal-proj-solution');
     const featuresEl = document.getElementById('modal-proj-features');
     const techEl = document.getElementById('modal-proj-tech');
-    const githubLinkEl = document.getElementById('modal-github-link');
-    const demoLinkEl = document.getElementById('modal-demo-link');
-    const demoLabelEl = document.getElementById('modal-demo-label');
-    const pageLinkEl = document.getElementById('modal-page-link');
 
     let lastFocusedElement = null;
 
@@ -234,18 +230,6 @@
           pill.innerHTML = '<i class="' + tech.icon + '"></i> ' + tech.name;
           techEl.appendChild(pill);
         });
-      }
-
-      // Populate action links
-      if (githubLinkEl) {
-        githubLinkEl.href = data.github || 'https://github.com/pratikshadhere07';
-      }
-      if (demoLinkEl && demoLabelEl) {
-        demoLinkEl.href = data.demo || data.github || '#';
-        demoLabelEl.textContent = data.demoLabel || 'Live Demo';
-      }
-      if (pageLinkEl) {
-        pageLinkEl.href = data.pageUrl || '#';
       }
 
       // Show modal & prevent background scrolling
@@ -355,14 +339,700 @@
     }
   }
 
-  // Run on DOMContentLoaded or immediately if already loaded
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', function () {
-      initProjectModal();
-      initMobileNav();
+  /**
+   * Celestial Glitter & Star Sparkles Canvas Engine
+   * High performance, lightweight (no external dependencies), 60fps,
+   * respects prefers-reduced-motion, pauses when page is hidden.
+   */
+  function initGlitterUniverse() {
+    // Respect user's motion preferences
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      return;
+    }
+
+    let canvas = document.getElementById('glitter-canvas');
+    if (!canvas) {
+      canvas = document.createElement('canvas');
+      canvas.id = 'glitter-canvas';
+      canvas.className = 'glitter-canvas';
+      canvas.setAttribute('aria-hidden', 'true');
+      document.body.prepend(canvas);
+    }
+
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    let width = 0;
+    let height = 0;
+    let dpr = 1;
+    let particles = [];
+    let animationFrameId = null;
+    let mouse = { x: -1000, y: -1000, active: false };
+
+    function resize() {
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = Math.floor(width * dpr);
+      canvas.height = Math.floor(height * dpr);
+      canvas.style.width = width + 'px';
+      canvas.style.height = height + 'px';
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+
+    // Color palette matching luxury dark theme
+    const colors = [
+      { r: 99, g: 102, b: 241 },   // Electric Indigo
+      { r: 139, g: 92, b: 246 },  // Royal Purple
+      { r: 6, g: 182, b: 212 },   // Cosmic Cyan
+      { r: 236, g: 72, b: 153 },  // Aurora Pink
+      { r: 255, g: 255, b: 255 }   // Starlight White
+    ];
+
+    function createParticle() {
+      const isStar = Math.random() < 0.35; // 35% 4-point star sparkles, 65% stardust motes
+      const color = colors[Math.floor(Math.random() * colors.length)];
+      return {
+        x: Math.random() * width,
+        y: Math.random() * height,
+        vx: (Math.random() - 0.5) * 0.28,
+        vy: (Math.random() - 0.5) * 0.28 - 0.08, // Subtle upward drift
+        size: isStar ? 2.5 + Math.random() * 3.5 : 1.2 + Math.random() * 1.8,
+        isStar: isStar,
+        color: color,
+        alpha: 0.15 + Math.random() * 0.65,
+        minAlpha: 0.1 + Math.random() * 0.2,
+        maxAlpha: 0.55 + Math.random() * 0.45,
+        twinkleSpeed: 0.012 + Math.random() * 0.024,
+        twinkleAngle: Math.random() * Math.PI * 2,
+        rotation: Math.random() * Math.PI,
+        rotationSpeed: (Math.random() - 0.5) * 0.015
+      };
+    }
+
+    function initParticles() {
+      resize();
+      const count = width < 768 ? 32 : 60;
+      particles = [];
+      for (let i = 0; i < count; i++) {
+        particles.push(createParticle());
+      }
+    }
+
+    // Draw 4-point diamond sparkle
+    function drawStar(cx, cy, spikes, outerRadius, innerRadius, color, alpha, rot) {
+      ctx.save();
+      ctx.translate(cx, cy);
+      ctx.rotate(rot);
+
+      // Core radial glow
+      const glow = ctx.createRadialGradient(0, 0, 0, 0, 0, outerRadius * 2);
+      glow.addColorStop(0, 'rgba(' + color.r + ',' + color.g + ',' + color.b + ',' + (alpha * 0.8) + ')');
+      glow.addColorStop(0.5, 'rgba(' + color.r + ',' + color.g + ',' + color.b + ',' + (alpha * 0.25) + ')');
+      glow.addColorStop(1, 'rgba(' + color.r + ',' + color.g + ',' + color.b + ',0)');
+      ctx.fillStyle = glow;
+      ctx.beginPath();
+      ctx.arc(0, 0, outerRadius * 2, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Sharp 4-point cross rays
+      ctx.beginPath();
+      const step = Math.PI / spikes;
+      let rotAngle = -Math.PI / 2;
+      for (let i = 0; i < spikes; i++) {
+        let x = Math.cos(rotAngle) * outerRadius;
+        let y = Math.sin(rotAngle) * outerRadius;
+        if (i === 0) ctx.moveTo(x, y);
+        else ctx.lineTo(x, y);
+        rotAngle += step;
+
+        x = Math.cos(rotAngle) * innerRadius;
+        y = Math.sin(rotAngle) * innerRadius;
+        ctx.lineTo(x, y);
+        rotAngle += step;
+      }
+      ctx.closePath();
+      ctx.fillStyle = 'rgba(255, 255, 255, ' + Math.min(alpha * 1.3, 1) + ')';
+      ctx.fill();
+
+      ctx.restore();
+    }
+
+    function drawStardust(cx, cy, radius, color, alpha) {
+      const grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, radius * 2);
+      grad.addColorStop(0, 'rgba(' + color.r + ',' + color.g + ',' + color.b + ',' + alpha + ')');
+      grad.addColorStop(0.5, 'rgba(' + color.r + ',' + color.g + ',' + color.b + ',' + (alpha * 0.4) + ')');
+      grad.addColorStop(1, 'rgba(' + color.r + ',' + color.g + ',' + color.b + ',0)');
+
+      ctx.fillStyle = grad;
+      ctx.beginPath();
+      ctx.arc(cx, cy, radius * 2, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    function updateAndRender() {
+      ctx.clearRect(0, 0, width, height);
+
+      for (let i = 0; i < particles.length; i++) {
+        const p = particles[i];
+
+        // Motion update
+        p.x += p.vx;
+        p.y += p.vy;
+        p.twinkleAngle += p.twinkleSpeed;
+        p.rotation += p.rotationSpeed;
+
+        // Twinkle sinusoidal brightness
+        p.alpha = p.minAlpha + (p.maxAlpha - p.minAlpha) * (0.5 + 0.5 * Math.sin(p.twinkleAngle));
+
+        // Interactive mouse proximity reaction
+        if (mouse.active) {
+          const dx = p.x - mouse.x;
+          const dy = p.y - mouse.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 120) {
+            const factor = 1 - dist / 120;
+            p.alpha = Math.min(p.alpha + factor * 0.45, 1);
+            p.x += (dx / dist) * 0.35;
+            p.y += (dy / dist) * 0.35;
+          }
+        }
+
+        // Screen wrap
+        if (p.x < -20) p.x = width + 20;
+        else if (p.x > width + 20) p.x = -20;
+        if (p.y < -20) p.y = height + 20;
+        else if (p.y > height + 20) p.y = -20;
+
+        // Draw particle
+        if (p.isStar) {
+          drawStar(p.x, p.y, 4, p.size, p.size * 0.25, p.color, p.alpha, p.rotation);
+        } else {
+          drawStardust(p.x, p.y, p.size, p.color, p.alpha);
+        }
+      }
+
+      animationFrameId = requestAnimationFrame(updateAndRender);
+    }
+
+    // Mouse tracking
+    window.addEventListener('mousemove', function (e) {
+      mouse.x = e.clientX;
+      mouse.y = e.clientY;
+      mouse.active = true;
+    }, { passive: true });
+
+    window.addEventListener('mouseleave', function () {
+      mouse.active = false;
     });
-  } else {
+
+    // Debounced resize
+    let resizeTimer = null;
+    window.addEventListener('resize', function () {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(function () {
+        initParticles();
+      }, 150);
+    });
+
+    // Pause animation when tab is inactive to save battery/CPU
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) {
+        if (animationFrameId) cancelAnimationFrame(animationFrameId);
+      } else {
+        animationFrameId = requestAnimationFrame(updateAndRender);
+      }
+    });
+
+    initParticles();
+    animationFrameId = requestAnimationFrame(updateAndRender);
+  }
+
+  /**
+   * Smooth active navbar highlight and scroll effect
+   */
+  function initNavbarScrollEffect() {
+    const navbar = document.getElementById('navbar');
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+
+    function onScroll() {
+      const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+
+      // Toggle navbar background elevation
+      if (navbar) {
+        if (scrollY > 40) {
+          navbar.classList.add('scrolled');
+        } else {
+          navbar.classList.remove('scrolled');
+        }
+      }
+
+      // Highlight active nav item
+      let currentSectionId = '';
+      sections.forEach(function (section) {
+        const sectionTop = section.offsetTop - 150;
+        const sectionHeight = section.offsetHeight;
+        if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+          currentSectionId = section.getAttribute('id');
+        }
+      });
+
+      if (currentSectionId && navLinks.length) {
+        navLinks.forEach(function (link) {
+          const href = link.getAttribute('href');
+          if (href === '#' + currentSectionId) {
+            link.classList.add('active');
+          } else {
+            link.classList.remove('active');
+          }
+        });
+      }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  }
+
+  /**
+   * Interactive Floating Background Elements Parallax
+   */
+  function initFloatingElementsParallax() {
+    const container = document.getElementById('floating-elements-container');
+    if (!container) return;
+    const elements = container.querySelectorAll('.float-element');
+    if (!elements.length) return;
+
+    let mouseX = 0;
+    let mouseY = 0;
+    let currentX = 0;
+    let currentY = 0;
+    let isTicking = false;
+
+    window.addEventListener('mousemove', function (e) {
+      mouseX = (e.clientX / window.innerWidth - 0.5) * 32;
+      mouseY = (e.clientY / window.innerHeight - 0.5) * 32;
+      if (!isTicking) {
+        isTicking = true;
+        requestAnimationFrame(updateParallax);
+      }
+    }, { passive: true });
+
+    function updateParallax() {
+      currentX += (mouseX - currentX) * 0.08;
+      currentY += (mouseY - currentY) * 0.08;
+
+      elements.forEach(function (el, idx) {
+        const factor = ((idx % 3) + 1) * 0.4;
+        const x = currentX * factor;
+        const y = currentY * factor;
+        el.style.transform = 'translate3d(' + x.toFixed(2) + 'px, ' + y.toFixed(2) + 'px, 0)';
+      });
+
+      if (Math.abs(mouseX - currentX) > 0.05 || Math.abs(mouseY - currentY) > 0.05) {
+        requestAnimationFrame(updateParallax);
+      } else {
+        isTicking = false;
+      }
+    }
+  }
+
+  /**
+   * Skills Section Animated Progress Fill on Scroll
+   */
+  function initSkillBarsAnimation() {
+    const skillsSection = document.getElementById('skills');
+    const fills = document.querySelectorAll('.skill-progress-fill');
+    if (!skillsSection || !fills.length) return;
+
+    // Reset fills to 0 for initial reveal animation
+    fills.forEach(function (fill) {
+      const target = fill.style.getPropertyValue('--w') || '80%';
+      fill.setAttribute('data-target-w', target);
+      fill.style.width = '0%';
+    });
+
+    function animateFills() {
+      fills.forEach(function (fill, idx) {
+        setTimeout(function () {
+          const target = fill.getAttribute('data-target-w');
+          if (target) fill.style.width = target;
+        }, idx * 45);
+      });
+    }
+
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            animateFills();
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+      observer.observe(skillsSection);
+    } else {
+      animateFills();
+    }
+  }
+
+  /**
+   * Functional Interactive Contact Form
+   * Handles client-side validation, asynchronous dispatch to /api/contact,
+   * duplicate-submission prevention, loading states, error handling with retry,
+   * and verified success confirmation.
+   */
+  function initContactForm() {
+    const form = document.getElementById('contact-form');
+    if (!form) return;
+
+    const nameInput = document.getElementById('name');
+    const emailInput = document.getElementById('email');
+    const subjectInput = document.getElementById('subject');
+    const messageInput = document.getElementById('message');
+    const statusEl = document.getElementById('form-status');
+    const submitBtn = document.getElementById('contact-submit-btn');
+
+    let isSubmitting = false;
+
+    const groups = {
+      name: document.getElementById('group-name'),
+      email: document.getElementById('group-email'),
+      subject: document.getElementById('group-subject'),
+      message: document.getElementById('group-message')
+    };
+
+    const errors = {
+      name: document.getElementById('name-error'),
+      email: document.getElementById('email-error'),
+      subject: document.getElementById('subject-error'),
+      message: document.getElementById('message-error')
+    };
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+    function setFieldError(field, msg) {
+      const group = groups[field];
+      const errorEl = errors[field];
+      const inputEl = field === 'name' ? nameInput : field === 'email' ? emailInput : field === 'subject' ? subjectInput : messageInput;
+      if (group) group.classList.add('has-error');
+      if (inputEl) inputEl.setAttribute('aria-invalid', 'true');
+      if (errorEl) {
+        errorEl.textContent = msg;
+        errorEl.style.display = 'flex';
+      }
+    }
+
+    function clearFieldError(field) {
+      const group = groups[field];
+      const errorEl = errors[field];
+      const inputEl = field === 'name' ? nameInput : field === 'email' ? emailInput : field === 'subject' ? subjectInput : messageInput;
+      if (group) group.classList.remove('has-error');
+      if (inputEl) inputEl.removeAttribute('aria-invalid');
+      if (errorEl) {
+        errorEl.textContent = '';
+        errorEl.style.display = 'none';
+      }
+    }
+
+    // Clear field errors as user types
+    if (nameInput) nameInput.addEventListener('input', function () { clearFieldError('name'); });
+    if (emailInput) emailInput.addEventListener('input', function () { clearFieldError('email'); });
+    if (subjectInput) subjectInput.addEventListener('input', function () { clearFieldError('subject'); });
+    if (messageInput) messageInput.addEventListener('input', function () { clearFieldError('message'); });
+
+    function showStatus(type, htmlContent) {
+      if (!statusEl) return;
+      statusEl.className = 'form-status ' + type;
+      statusEl.innerHTML = htmlContent;
+      statusEl.style.display = 'flex';
+    }
+
+    function hideStatus() {
+      if (!statusEl) return;
+      statusEl.style.display = 'none';
+      statusEl.innerHTML = '';
+      statusEl.className = 'form-status';
+    }
+
+    function restoreButton() {
+      isSubmitting = false;
+      if (submitBtn) {
+        submitBtn.classList.remove('is-submitting');
+        submitBtn.removeAttribute('disabled');
+        const textSpan = submitBtn.querySelector('.btn-text');
+        if (textSpan) textSpan.textContent = 'Send Message';
+      }
+    }
+
+    function attachRetryHandler(mailtoUrl) {
+      const retryBtn = document.getElementById('contact-retry-btn');
+      if (retryBtn) {
+        retryBtn.addEventListener('click', function () {
+          hideStatus();
+          if (submitBtn) submitBtn.click();
+        });
+      }
+    }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      // Duplicate-submission prevention
+      if (isSubmitting) return;
+
+      hideStatus();
+
+      let isValid = true;
+      let firstInvalid = null;
+
+      // Validate Name
+      const nameVal = nameInput ? nameInput.value.trim() : '';
+      if (!nameVal || nameVal.length < 2) {
+        setFieldError('name', 'Please enter your full name (minimum 2 characters).');
+        isValid = false;
+        if (!firstInvalid && nameInput) firstInvalid = nameInput;
+      } else {
+        clearFieldError('name');
+      }
+
+      // Validate Email
+      const emailVal = emailInput ? emailInput.value.trim() : '';
+      if (!emailVal) {
+        setFieldError('email', 'Email address is required.');
+        isValid = false;
+        if (!firstInvalid && emailInput) firstInvalid = emailInput;
+      } else if (!emailRegex.test(emailVal)) {
+        setFieldError('email', 'Please enter a valid email address (e.g., name@example.com).');
+        isValid = false;
+        if (!firstInvalid && emailInput) firstInvalid = emailInput;
+      } else {
+        clearFieldError('email');
+      }
+
+      // Validate Subject
+      const subjectVal = subjectInput ? subjectInput.value.trim() : '';
+      if (!subjectVal || subjectVal.length < 3) {
+        setFieldError('subject', 'Please enter a subject (minimum 3 characters).');
+        isValid = false;
+        if (!firstInvalid && subjectInput) firstInvalid = subjectInput;
+      } else {
+        clearFieldError('subject');
+      }
+
+      // Validate Message
+      const messageVal = messageInput ? messageInput.value.trim() : '';
+      if (!messageVal || messageVal.length < 10) {
+        setFieldError('message', 'Please enter a message with at least 10 characters.');
+        isValid = false;
+        if (!firstInvalid && messageInput) firstInvalid = messageInput;
+      } else {
+        clearFieldError('message');
+      }
+
+      if (!isValid) {
+        if (firstInvalid) firstInvalid.focus();
+        showStatus('error', '<i class="fas fa-exclamation-circle"></i> <span>Please correct the highlighted fields above before submitting.</span>');
+        return;
+      }
+
+      // Lock submission & activate loading state
+      isSubmitting = true;
+      if (submitBtn) {
+        submitBtn.classList.add('is-submitting');
+        submitBtn.setAttribute('disabled', 'disabled');
+        const textSpan = submitBtn.querySelector('.btn-text');
+        if (textSpan) textSpan.textContent = 'Sending Message...';
+      }
+
+      showStatus('notice', '<span class="btn-spinner" style="display:inline-block"></span> <span>Transmitting your message to pratikshadhere07@gmail.com...</span>');
+
+      const mailtoUrl = 'mailto:pratikshadhere07@gmail.com' +
+        '?subject=' + encodeURIComponent(subjectVal) +
+        '&body=' + encodeURIComponent('From: ' + nameVal + ' (' + emailVal + ')\n\n' + messageVal);
+
+      const gotchaInput = form.querySelector('input[name="_gotcha"]');
+      const payload = {
+        name: nameVal,
+        email: emailVal,
+        subject: subjectVal,
+        message: messageVal,
+        _gotcha: gotchaInput ? gotchaInput.value : ''
+      };
+
+      const endpoint = form.getAttribute('action') || '/api/contact';
+
+      function sendViaFallback() {
+        showStatus('notice', '<span class="btn-spinner" style="display:inline-block"></span> <span>Routing message to pratikshadhere07@gmail.com...</span>');
+
+        fetch('https://formsubmit.co/ajax/pratikshadhere07@gmail.com', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            name: nameVal,
+            email: emailVal,
+            _subject: '[Portfolio Inquiry] ' + subjectVal + ' - from ' + nameVal,
+            message: messageVal,
+            _captcha: 'false',
+            _template: 'box'
+          })
+        })
+        .then(function (fsRes) {
+          restoreButton();
+          return fsRes.json().then(function (fsData) {
+            if (fsData && (fsData.success === true || fsData.success === 'true')) {
+              form.reset();
+              showStatus('success',
+                '<div style="width:100%">' +
+                  '<div style="display:flex;align-items:center;gap:10px;margin-bottom:6px">' +
+                    '<i class="fas fa-check-circle" style="color:#10b981;font-size:1.3rem"></i>' +
+                    '<strong style="font-size:1.02rem">Thank you, ' + escapeHtml(nameVal) + '!</strong>' +
+                  '</div>' +
+                  '<p style="margin:0;font-size:0.88rem;color:#e2e8f0;line-height:1.6">' +
+                    'Your message has been submitted successfully and delivered directly to <strong>pratikshadhere07@gmail.com</strong>. I have received your request and will get back to you within 24 hours.' +
+                  '</p>' +
+                '</div>'
+              );
+            } else {
+              const fsMsg = (fsData && fsData.message) ? fsData.message : 'Email delivery service could not complete the request.';
+              showStatus('error',
+                '<div style="width:100%">' +
+                  '<div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">' +
+                    '<i class="fas fa-envelope-open-text" style="font-size:1.2rem;color:#f59e0b"></i>' +
+                    '<strong>Email Service Notice</strong>' +
+                  '</div>' +
+                  '<p style="margin:0 0 10px 0;font-size:0.86rem;color:#fde68a;line-height:1.5">' + escapeHtml(fsMsg) + '</p>' +
+                  '<div class="status-action-btns">' +
+                    '<button type="button" class="status-retry-btn" id="contact-retry-btn"><i class="fas fa-redo"></i> Try Again</button>' +
+                    '<a href="' + mailtoUrl + '" class="status-fallback-btn"><i class="fas fa-envelope"></i> Send via Email App</a>' +
+                  '</div>' +
+                '</div>'
+              );
+              attachRetryHandler(mailtoUrl);
+            }
+          });
+        })
+        .catch(function () {
+          restoreButton();
+          showStatus('error',
+            '<div style="width:100%">' +
+              '<div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">' +
+                '<i class="fas fa-exclamation-triangle" style="font-size:1.2rem;color:#f43f5e"></i>' +
+                '<strong>Static Server Detected (HTTP 403)</strong>' +
+              '</div>' +
+              '<p style="margin:0 0 10px 0;font-size:0.86rem;color:#fda4af;line-height:1.5">' +
+                'Your current preview server blocks POST requests to local directories. On Vercel, this is handled automatically by serverless functions. You can also send directly below:' +
+              '</p>' +
+              '<div class="status-action-btns">' +
+                '<a href="' + mailtoUrl + '" class="status-fallback-btn" style="background:#6366f1;border-color:#6366f1"><i class="fas fa-envelope"></i> Send Directly via Email App</a>' +
+                '<a href="https://wa.me/919075294905?text=Hello%20Pratiksha%2C%20I%20tried%20reaching%20you%20via%20your%20portfolio." target="_blank" class="status-fallback-btn" style="background:#25D366;border-color:#25D366"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>' +
+              '</div>' +
+            '</div>'
+          );
+          attachRetryHandler(mailtoUrl);
+        });
+      }
+
+      fetch(endpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      })
+      .then(function (response) {
+        if (response.ok) {
+          restoreButton();
+          return response.json().then(function (data) {
+            if (data && data.success) {
+              form.reset();
+              showStatus('success',
+                '<div style="width:100%">' +
+                  '<div style="display:flex;align-items:center;gap:10px;margin-bottom:6px">' +
+                    '<i class="fas fa-check-circle" style="color:#10b981;font-size:1.3rem"></i>' +
+                    '<strong style="font-size:1.02rem">Thank you, ' + escapeHtml(nameVal) + '!</strong>' +
+                  '</div>' +
+                  '<p style="margin:0;font-size:0.88rem;color:#e2e8f0;line-height:1.6">' +
+                    'Your message has been submitted successfully and delivered directly to <strong>pratikshadhere07@gmail.com</strong>. I have received your request and will get back to you within 24 hours.' +
+                  '</p>' +
+                '</div>'
+              );
+            } else {
+              const errMsg = (data && data.error) ? data.error : 'Unexpected response from server.';
+              showStatus('error',
+                '<div style="width:100%">' +
+                  '<div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">' +
+                    '<i class="fas fa-exclamation-triangle" style="font-size:1.2rem;color:#f43f5e"></i>' +
+                    '<strong>Message Delivery Incomplete</strong>' +
+                  '</div>' +
+                  '<p style="margin:0 0 10px 0;font-size:0.86rem;color:#fda4af;line-height:1.5">' + escapeHtml(errMsg) + '</p>' +
+                  '<div class="status-action-btns">' +
+                    '<button type="button" class="status-retry-btn" id="contact-retry-btn"><i class="fas fa-redo"></i> Try Again</button>' +
+                    '<a href="' + mailtoUrl + '" class="status-fallback-btn"><i class="fas fa-envelope"></i> Send Directly via Email App</a>' +
+                  '</div>' +
+                '</div>'
+              );
+              attachRetryHandler(mailtoUrl);
+            }
+          });
+        } else if (response.status === 403 || response.status === 404 || response.status === 405) {
+          // Static dev server (VS Code Live Server / Apache / IDE preview) blocks POST /api/contact
+          // Automatically route via direct email delivery service
+          return sendViaFallback();
+        } else {
+          restoreButton();
+          return response.json().then(function (errData) {
+            const errMsg = (errData && errData.error) ? errData.error : ('Server returned status ' + response.status + '.');
+            showStatus('error',
+              '<div style="width:100%">' +
+                '<div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">' +
+                  '<i class="fas fa-exclamation-triangle" style="font-size:1.2rem;color:#f43f5e"></i>' +
+                  '<strong>Message Not Delivered</strong>' +
+                '</div>' +
+                '<p style="margin:0 0 10px 0;font-size:0.86rem;color:#fda4af;line-height:1.5">' + escapeHtml(errMsg) + '</p>' +
+                '<div class="status-action-btns">' +
+                  '<button type="button" class="status-retry-btn" id="contact-retry-btn"><i class="fas fa-redo"></i> Try Again</button>' +
+                  '<a href="' + mailtoUrl + '" class="status-fallback-btn"><i class="fas fa-envelope"></i> Send Directly via Email App</a>' +
+                '</div>' +
+              '</div>'
+            );
+            attachRetryHandler(mailtoUrl);
+          }).catch(function () {
+            sendViaFallback();
+          });
+        }
+      })
+      .catch(function () {
+        // Network or CORS block on /api/contact -> attempt direct fallback
+        sendViaFallback();
+      });
+    });
+
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text || '';
+      return div.innerHTML;
+    }
+  }
+
+  // Run on DOMContentLoaded or immediately if already loaded
+  function initAll() {
     initProjectModal();
     initMobileNav();
+    initGlitterUniverse();
+    initFloatingElementsParallax();
+    initNavbarScrollEffect();
+    initSkillBarsAnimation();
+    initContactForm();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAll);
+  } else {
+    initAll();
   }
 })();

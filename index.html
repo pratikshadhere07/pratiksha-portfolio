@@ -15,9 +15,51 @@
   <!-- Font Awesome for icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/style.css?v=final2" />
 </head>
 <body>
+
+  <!-- Ambient Aurora, Floating Graphical Elements & Celestial Canvas Overlay -->
+  <div class="aurora-container" aria-hidden="true">
+    <div class="aurora-beam aurora-beam-1"></div>
+    <div class="aurora-beam aurora-beam-2"></div>
+    <div class="aurora-beam aurora-beam-3"></div>
+  </div>
+
+  <div class="floating-elements-container" id="floating-elements-container" aria-hidden="true">
+    <div class="float-element float-geo-1">
+      <div class="neon-shape shape-diamond">
+        <div class="shape-inner"></div>
+      </div>
+    </div>
+    <div class="float-element float-geo-2">
+      <div class="neon-shape shape-ring">
+        <div class="shape-inner"></div>
+      </div>
+    </div>
+    <div class="float-element float-geo-3">
+      <div class="neon-shape shape-code">
+        <span>&lt;/&gt;</span>
+      </div>
+    </div>
+    <div class="float-element float-geo-4">
+      <div class="neon-shape shape-bracket">
+        <span>{ }</span>
+      </div>
+    </div>
+    <div class="float-element float-geo-5">
+      <div class="neon-shape shape-hexagon">
+        <div class="shape-inner"></div>
+      </div>
+    </div>
+    <div class="float-element float-geo-6">
+      <div class="neon-shape shape-cross">
+        <div class="shape-inner"></div>
+      </div>
+    </div>
+  </div>
+
+  <canvas id="glitter-canvas" class="glitter-canvas" aria-hidden="true"></canvas>
 
   <!-- ╔═══════════════════════════════════════╗ -->
   <!-- ║           NAVIGATION BAR              ║ -->
@@ -26,7 +68,7 @@
   <header class="navbar" id="navbar">
     <div class="nav-inner">
       <a href="#home" class="nav-logo">
-        <span class="logo-sym">&lt;</span>Pratiksha Dhere<span class="logo-sym">/&gt;</span>
+        <span class="logo-sym"></span>Pratiksha Dhere<span class="logo-sym"></span>
       </a>
       <nav>
         <ul class="nav-links">
@@ -110,17 +152,20 @@
         <div class="hero-img-glow"></div>
         <div class="hero-avatar">
           <div class="avatar-initials">
-            <img src="assets/images/profile.jpeg" alt="My Profile Picture"
+            <img src="assets/images/profile.jpeg" alt="Pratiksha Dhere Profile Picture" />
           </div>
         </div>
-        
+        <div class="float-chip chip-java"><i class="fab fa-android"></i> Android Dev</div>
+        <div class="float-chip chip-react"><i class="fas fa-layer-group"></i> UI/UX Design</div>
+        <div class="float-chip chip-ai"><i class="fas fa-brain"></i> AI &amp; ML</div>
       </div>
     </div>
 
-    <div class="scroll-indicator">
+    <!-- <div class="scroll-indicator">
       <div class="scroll-line"></div>
       <span>Scroll</span>
-    </div>
+    </div> -->
+    
   </section>
 
 
@@ -225,165 +270,371 @@
         <div class="title-line"></div>
       </div>
 
-      <!-- Frontend -->
-      <div class="skill-group">
-        <h3 class="skill-group-title">
-          <span class="group-dot dot-blue"></span> Frontend Development
-        </h3>
-        <div class="skills-grid">
-
-          <div class="skill-card glass-card">
-            <div class="skill-top">
-              <div class="skill-icon-wrap" style="--ic:#e44d26"><i class="fab fa-html5"></i></div>
-              <span class="skill-name">HTML5</span>
-              <span class="skill-pct">92%</span>
+      <div class="skills-container">
+        <!-- Frontend -->
+        <div class="skill-group">
+          <div class="skill-group-header">
+            <div class="skill-group-title-wrap">
+              <span class="group-dot dot-blue"></span>
+              <h3 class="skill-group-title">Frontend Development</h3>
             </div>
-            <div class="skill-bar-wrap">
-              <div class="skill-bar" style="--w:92%;--c:#e44d26"></div>
-            </div>
+            <span class="skill-count-badge">4 Technologies</span>
           </div>
+          <div class="skills-grid">
 
-          <div class="skill-card glass-card">
-            <div class="skill-top">
-              <div class="skill-icon-wrap" style="--ic:#264de4"><i class="fab fa-css3-alt"></i></div>
-              <span class="skill-name">CSS3</span>
-              <span class="skill-pct">88%</span>
+            <div class="skill-card glass-card">
+              <div class="skill-top">
+                <div class="skill-icon-wrap" style="--ic:#e44d26"><i class="fab fa-html5"></i></div>
+                <div class="skill-info">
+                  <span class="skill-name">HTML5</span>
+                  <span class="skill-level">Semantic &amp; Accessible</span>
+                </div>
+                <div class="skill-pct-badge" style="--c:#e44d26">
+                  <span class="pct-val">95</span><span class="pct-unit">%</span>
+                </div>
+              </div>
+              <div class="skill-visual" aria-hidden="true">
+                <div class="skill-progress-bar" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100">
+                  <div class="skill-progress-fill" style="--w:95%;--c:#e44d26">
+                    <span class="progress-glow-head"></span>
+                  </div>
+                  <div class="skill-progress-marks">
+                    <span></span><span></span><span></span>
+                  </div>
+                </div>
+                <div class="skill-footer-meta">
+                  <span class="meta-tag"><i class="fas fa-microchip"></i> Core Stack</span>
+                  <span class="meta-tier-pill tier-advanced"><span class="tier-dot"></span>Advanced</span>
+                </div>
+              </div>
             </div>
-            <div class="skill-bar-wrap">
-              <div class="skill-bar" style="--w:88%;--c:#264de4"></div>
+
+            <div class="skill-card glass-card">
+              <div class="skill-top">
+                <div class="skill-icon-wrap" style="--ic:#264de4"><i class="fab fa-css3-alt"></i></div>
+                <div class="skill-info">
+                  <span class="skill-name">CSS3</span>
+                  <span class="skill-level">Modern &amp; Responsive</span>
+                </div>
+                <div class="skill-pct-badge" style="--c:#264de4">
+                  <span class="pct-val">92</span><span class="pct-unit">%</span>
+                </div>
+              </div>
+              <div class="skill-visual" aria-hidden="true">
+                <div class="skill-progress-bar" role="progressbar" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100">
+                  <div class="skill-progress-fill" style="--w:92%;--c:#264de4">
+                    <span class="progress-glow-head"></span>
+                  </div>
+                  <div class="skill-progress-marks">
+                    <span></span><span></span><span></span>
+                  </div>
+                </div>
+                <div class="skill-footer-meta">
+                  <span class="meta-tag"><i class="fas fa-paint-brush"></i> UI/UX Design</span>
+                  <span class="meta-tier-pill tier-advanced"><span class="tier-dot"></span>Advanced</span>
+                </div>
+              </div>
             </div>
+
+            <div class="skill-card glass-card">
+              <div class="skill-top">
+                <div class="skill-icon-wrap" style="--ic:#f7df1e"><i class="fab fa-js-square"></i></div>
+                <div class="skill-info">
+                  <span class="skill-name">JavaScript</span>
+                  <span class="skill-level">ES6+ &amp; DOM APIs</span>
+                </div>
+                <div class="skill-pct-badge" style="--c:#f7df1e">
+                  <span class="pct-val">88</span><span class="pct-unit">%</span>
+                </div>
+              </div>
+              <div class="skill-visual" aria-hidden="true">
+                <div class="skill-progress-bar" role="progressbar" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100">
+                  <div class="skill-progress-fill" style="--w:88%;--c:#f7df1e">
+                    <span class="progress-glow-head"></span>
+                  </div>
+                  <div class="skill-progress-marks">
+                    <span></span><span></span><span></span>
+                  </div>
+                </div>
+                <div class="skill-footer-meta">
+                  <span class="meta-tag"><i class="fas fa-bolt"></i> Interactive Logic</span>
+                  <span class="meta-tier-pill tier-proficient"><span class="tier-dot"></span>Proficient</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="skill-card glass-card">
+              <div class="skill-top">
+                <div class="skill-icon-wrap" style="--ic:#61dafb"><i class="fab fa-react"></i></div>
+                <div class="skill-info">
+                  <span class="skill-name">React</span>
+                  <span class="skill-level">Component Architecture</span>
+                </div>
+                <div class="skill-pct-badge" style="--c:#61dafb">
+                  <span class="pct-val">75</span><span class="pct-unit">%</span>
+                </div>
+              </div>
+              <div class="skill-visual" aria-hidden="true">
+                <div class="skill-progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+                  <div class="skill-progress-fill" style="--w:75%;--c:#61dafb">
+                    <span class="progress-glow-head"></span>
+                  </div>
+                  <div class="skill-progress-marks">
+                    <span></span><span></span><span></span>
+                  </div>
+                </div>
+                <div class="skill-footer-meta">
+                  <span class="meta-tag"><i class="fas fa-cubes"></i> Modern SPA</span>
+                  <span class="meta-tier-pill tier-working"><span class="tier-dot"></span>Working</span>
+                </div>
+              </div>
+            </div>
+
           </div>
-
-          <div class="skill-card glass-card">
-            <div class="skill-top">
-              <div class="skill-icon-wrap" style="--ic:#f7df1e"><i class="fab fa-js-square"></i></div>
-              <span class="skill-name">JavaScript</span>
-              <span class="skill-pct">40%</span>
-            </div>
-            <div class="skill-bar-wrap">
-              <div class="skill-bar" style="--w:40%;--c:#f7df1e"></div>
-            </div>
-          </div>
-
-          <div class="skill-card glass-card">
-            <div class="skill-top">
-              <div class="skill-icon-wrap" style="--ic:#61dafb"><i class="fab fa-react"></i></div>
-              <span class="skill-name">React</span>
-              <span class="skill-pct">20%</span>
-            </div>
-            <div class="skill-bar-wrap">
-              <div class="skill-bar" style="--w:20%;--c:#61dafb"></div>
-            </div>
-          </div>
-
         </div>
-      </div>
 
-      <!-- Backend -->
-      <div class="skill-group">
-        <h3 class="skill-group-title">
-          <span class="group-dot dot-purple"></span> Backend Development
-        </h3>
-        <div class="skills-grid">
-
-          <div class="skill-card glass-card">
-            <div class="skill-top">
-              <div class="skill-icon-wrap" style="--ic:#f89820"><i class="fab fa-java"></i></div>
-              <span class="skill-name">Java</span>
-              <span class="skill-pct">89%</span>
+        <!-- Backend -->
+        <div class="skill-group">
+          <div class="skill-group-header">
+            <div class="skill-group-title-wrap">
+              <span class="group-dot dot-purple"></span>
+              <h3 class="skill-group-title">Backend Development</h3>
             </div>
-            <div class="skill-bar-wrap">
-              <div class="skill-bar" style="--w:89%;--c:#f89820"></div>
-            </div>
+            <span class="skill-count-badge">4 Technologies</span>
           </div>
+          <div class="skills-grid">
 
-          <div class="skill-card glass-card">
-            <div class="skill-top">
-              <div class="skill-icon-wrap" style="--ic:#6db33f"><i class="fas fa-leaf"></i></div>
-              <span class="skill-name">Spring Boot</span>
-              <span class="skill-pct">60%</span>
+            <div class="skill-card glass-card">
+              <div class="skill-top">
+                <div class="skill-icon-wrap" style="--ic:#f89820"><i class="fab fa-java"></i></div>
+                <div class="skill-info">
+                  <span class="skill-name">Java</span>
+                  <span class="skill-level">Core OOP &amp; Android MAD</span>
+                </div>
+                <div class="skill-pct-badge" style="--c:#f89820">
+                  <span class="pct-val">95</span><span class="pct-unit">%</span>
+                </div>
+              </div>
+              <div class="skill-visual" aria-hidden="true">
+                <div class="skill-progress-bar" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100">
+                  <div class="skill-progress-fill" style="--w:95%;--c:#f89820">
+                    <span class="progress-glow-head"></span>
+                  </div>
+                  <div class="skill-progress-marks">
+                    <span></span><span></span><span></span>
+                  </div>
+                </div>
+                <div class="skill-footer-meta">
+                  <span class="meta-tag"><i class="fab fa-android"></i> Mobile &amp; Backend</span>
+                  <span class="meta-tier-pill tier-advanced"><span class="tier-dot"></span>Advanced</span>
+                </div>
+              </div>
             </div>
-            <div class="skill-bar-wrap">
-              <div class="skill-bar" style="--w:60%;--c:#6db33f"></div>
+
+            <div class="skill-card glass-card">
+              <div class="skill-top">
+                <div class="skill-icon-wrap" style="--ic:#6db33f"><i class="fas fa-leaf"></i></div>
+                <div class="skill-info">
+                  <span class="skill-name">Spring Boot</span>
+                  <span class="skill-level">REST Services &amp; MVC</span>
+                </div>
+                <div class="skill-pct-badge" style="--c:#6db33f">
+                  <span class="pct-val">82</span><span class="pct-unit">%</span>
+                </div>
+              </div>
+              <div class="skill-visual" aria-hidden="true">
+                <div class="skill-progress-bar" role="progressbar" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100">
+                  <div class="skill-progress-fill" style="--w:82%;--c:#6db33f">
+                    <span class="progress-glow-head"></span>
+                  </div>
+                  <div class="skill-progress-marks">
+                    <span></span><span></span><span></span>
+                  </div>
+                </div>
+                <div class="skill-footer-meta">
+                  <span class="meta-tag"><i class="fas fa-server"></i> Microservices</span>
+                  <span class="meta-tier-pill tier-proficient"><span class="tier-dot"></span>Proficient</span>
+                </div>
+              </div>
             </div>
+
+            <div class="skill-card glass-card">
+              <div class="skill-top">
+                <div class="skill-icon-wrap" style="--ic:#3776ab"><i class="fab fa-python"></i></div>
+                <div class="skill-info">
+                  <span class="skill-name">Python</span>
+                  <span class="skill-level">Scripting &amp; ML Systems</span>
+                </div>
+                <div class="skill-pct-badge" style="--c:#3776ab">
+                  <span class="pct-val">90</span><span class="pct-unit">%</span>
+                </div>
+              </div>
+              <div class="skill-visual" aria-hidden="true">
+                <div class="skill-progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">
+                  <div class="skill-progress-fill" style="--w:90%;--c:#3776ab">
+                    <span class="progress-glow-head"></span>
+                  </div>
+                  <div class="skill-progress-marks">
+                    <span></span><span></span><span></span>
+                  </div>
+                </div>
+                <div class="skill-footer-meta">
+                  <span class="meta-tag"><i class="fas fa-brain"></i> AI &amp; Automation</span>
+                  <span class="meta-tier-pill tier-advanced"><span class="tier-dot"></span>Advanced</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="skill-card glass-card">
+              <div class="skill-top">
+                <div class="skill-icon-wrap" style="--ic:#ff5722"><i class="fas fa-network-wired"></i></div>
+                <div class="skill-info">
+                  <span class="skill-name">REST APIs</span>
+                  <span class="skill-level">JSON &amp; Endpoints</span>
+                </div>
+                <div class="skill-pct-badge" style="--c:#ff5722">
+                  <span class="pct-val">88</span><span class="pct-unit">%</span>
+                </div>
+              </div>
+              <div class="skill-visual" aria-hidden="true">
+                <div class="skill-progress-bar" role="progressbar" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100">
+                  <div class="skill-progress-fill" style="--w:88%;--c:#ff5722">
+                    <span class="progress-glow-head"></span>
+                  </div>
+                  <div class="skill-progress-marks">
+                    <span></span><span></span><span></span>
+                  </div>
+                </div>
+                <div class="skill-footer-meta">
+                  <span class="meta-tag"><i class="fas fa-exchange-alt"></i> Integration</span>
+                  <span class="meta-tier-pill tier-proficient"><span class="tier-dot"></span>Proficient</span>
+                </div>
+              </div>
+            </div>
+
           </div>
-
-          <div class="skill-card glass-card">
-            <div class="skill-top">
-              <div class="skill-icon-wrap" style="--ic:#339933"><i class="fab fa-node-js"></i></div>
-              <span class="skill-name">Python</span>
-              <span class="skill-pct">91%</span>
-            </div>
-            <div class="skill-bar-wrap">
-              <div class="skill-bar" style="--w:74%;--c:#339933"></div>
-            </div>
-          </div>
-
-          <div class="skill-card glass-card">
-            <div class="skill-top">
-              <div class="skill-icon-wrap" style="--ic:#ff5722"><i class="fas fa-fire"></i></div>
-              <span class="skill-name">REST APIs</span>
-              <span class="skill-pct">86%</span>
-            </div>
-            <div class="skill-bar-wrap">
-              <div class="skill-bar" style="--w:86%;--c:#ff5722"></div>
-            </div>
-          </div>
-
         </div>
-      </div>
 
-      <!-- Database -->
-      <div class="skill-group">
-        <h3 class="skill-group-title">
-          <span class="group-dot dot-cyan"></span> Database &amp; Tools
-        </h3>
-        <div class="skills-grid">
-
-          <div class="skill-card glass-card">
-            <div class="skill-top">
-              <div class="skill-icon-wrap" style="--ic:#00758f"><i class="fas fa-database"></i></div>
-              <span class="skill-name">MySQL</span>
-              <span class="skill-pct">85%</span>
+        <!-- Database & Tools -->
+        <div class="skill-group">
+          <div class="skill-group-header">
+            <div class="skill-group-title-wrap">
+              <span class="group-dot dot-cyan"></span>
+              <h3 class="skill-group-title">Database &amp; Tools</h3>
             </div>
-            <div class="skill-bar-wrap">
-              <div class="skill-bar" style="--w:85%;--c:#00758f"></div>
-            </div>
+            <span class="skill-count-badge">4 Technologies</span>
           </div>
+          <div class="skills-grid">
 
-          <div class="skill-card glass-card">
-            <div class="skill-top">
-              <div class="skill-icon-wrap" style="--ic:#4db33d"><i class="fas fa-leaf"></i></div>
-              <span class="skill-name">MongoDB</span>
-              <span class="skill-pct">78%</span>
+            <div class="skill-card glass-card">
+              <div class="skill-top">
+                <div class="skill-icon-wrap" style="--ic:#00758f"><i class="fas fa-database"></i></div>
+                <div class="skill-info">
+                  <span class="skill-name">MySQL</span>
+                  <span class="skill-level">Relational Data &amp; Queries</span>
+                </div>
+                <div class="skill-pct-badge" style="--c:#00758f">
+                  <span class="pct-val">88</span><span class="pct-unit">%</span>
+                </div>
+              </div>
+              <div class="skill-visual" aria-hidden="true">
+                <div class="skill-progress-bar" role="progressbar" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100">
+                  <div class="skill-progress-fill" style="--w:88%;--c:#00758f">
+                    <span class="progress-glow-head"></span>
+                  </div>
+                  <div class="skill-progress-marks">
+                    <span></span><span></span><span></span>
+                  </div>
+                </div>
+                <div class="skill-footer-meta">
+                  <span class="meta-tag"><i class="fas fa-table"></i> Schema &amp; Optimization</span>
+                  <span class="meta-tier-pill tier-proficient"><span class="tier-dot"></span>Proficient</span>
+                </div>
+              </div>
             </div>
-            <div class="skill-bar-wrap">
-              <div class="skill-bar" style="--w:78%;--c:#4db33d"></div>
+
+            <div class="skill-card glass-card">
+              <div class="skill-top">
+                <div class="skill-icon-wrap" style="--ic:#4db33d"><i class="fas fa-leaf"></i></div>
+                <div class="skill-info">
+                  <span class="skill-name">MongoDB</span>
+                  <span class="skill-level">NoSQL Document Store</span>
+                </div>
+                <div class="skill-pct-badge" style="--c:#4db33d">
+                  <span class="pct-val">80</span><span class="pct-unit">%</span>
+                </div>
+              </div>
+              <div class="skill-visual" aria-hidden="true">
+                <div class="skill-progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
+                  <div class="skill-progress-fill" style="--w:80%;--c:#4db33d">
+                    <span class="progress-glow-head"></span>
+                  </div>
+                  <div class="skill-progress-marks">
+                    <span></span><span></span><span></span>
+                  </div>
+                </div>
+                <div class="skill-footer-meta">
+                  <span class="meta-tag"><i class="fas fa-database"></i> Document Models</span>
+                  <span class="meta-tier-pill tier-proficient"><span class="tier-dot"></span>Proficient</span>
+                </div>
+              </div>
             </div>
+
+            <div class="skill-card glass-card">
+              <div class="skill-top">
+                <div class="skill-icon-wrap" style="--ic:#f05032"><i class="fab fa-git-alt"></i></div>
+                <div class="skill-info">
+                  <span class="skill-name">Git &amp; GitHub</span>
+                  <span class="skill-level">Version Control &amp; CI/CD</span>
+                </div>
+                <div class="skill-pct-badge" style="--c:#f05032">
+                  <span class="pct-val">92</span><span class="pct-unit">%</span>
+                </div>
+              </div>
+              <div class="skill-visual" aria-hidden="true">
+                <div class="skill-progress-bar" role="progressbar" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100">
+                  <div class="skill-progress-fill" style="--w:92%;--c:#f05032">
+                    <span class="progress-glow-head"></span>
+                  </div>
+                  <div class="skill-progress-marks">
+                    <span></span><span></span><span></span>
+                  </div>
+                </div>
+                <div class="skill-footer-meta">
+                  <span class="meta-tag"><i class="fas fa-code-branch"></i> Git Workflow</span>
+                  <span class="meta-tier-pill tier-advanced"><span class="tier-dot"></span>Advanced</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="skill-card glass-card">
+              <div class="skill-top">
+                <div class="skill-icon-wrap" style="--ic:#0098ff"><i class="fas fa-code"></i></div>
+                <div class="skill-info">
+                  <span class="skill-name">VS Code</span>
+                  <span class="skill-level">IDE &amp; Development</span>
+                </div>
+                <div class="skill-pct-badge" style="--c:#0098ff">
+                  <span class="pct-val">96</span><span class="pct-unit">%</span>
+                </div>
+              </div>
+              <div class="skill-visual" aria-hidden="true">
+                <div class="skill-progress-bar" role="progressbar" aria-valuenow="96" aria-valuemin="0" aria-valuemax="100">
+                  <div class="skill-progress-fill" style="--w:96%;--c:#0098ff">
+                    <span class="progress-glow-head"></span>
+                  </div>
+                  <div class="skill-progress-marks">
+                    <span></span><span></span><span></span>
+                  </div>
+                </div>
+                <div class="skill-footer-meta">
+                  <span class="meta-tag"><i class="fas fa-terminal"></i> Productivity</span>
+                  <span class="meta-tier-pill tier-advanced"><span class="tier-dot"></span>Advanced</span>
+                </div>
+              </div>
+            </div>
+
           </div>
-
-          <div class="skill-card glass-card">
-            <div class="skill-top">
-              <div class="skill-icon-wrap" style="--ic:#f05032"><i class="fab fa-git-alt"></i></div>
-              <span class="skill-name">Git &amp; GitHub</span>
-              <span class="skill-pct">90%</span>
-            </div>
-            <div class="skill-bar-wrap">
-              <div class="skill-bar" style="--w:90%;--c:#f05032"></div>
-            </div>
-          </div>
-
-          <div class="skill-card glass-card">
-            <div class="skill-top">
-              <div class="skill-icon-wrap" style="--ic:#0098ff"><i class="fas fa-code"></i></div>
-              <span class="skill-name">VS Code</span>
-              <span class="skill-pct">95%</span>
-            </div>
-            <div class="skill-bar-wrap">
-              <div class="skill-bar" style="--w:95%;--c:#0098ff"></div>
-            </div>
-          </div>
-
         </div>
       </div>
 
@@ -571,18 +822,7 @@
               <div id="modal-proj-tech" class="modal-tech-grid"></div>
             </div>
 
-            <!-- Action Buttons Footer -->
-            <div class="modal-actions-footer">
-              <a id="modal-page-link" href="project-ai-assistant.html" class="btn btn-outline modal-action-btn">
-                <i class="fas fa-file-alt"></i> <span>Detailed Report</span>
-              </a>
-              <a id="modal-github-link" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-outline modal-action-btn">
-                <i class="fab fa-github"></i> <span>GitHub</span>
-              </a>
-              <a id="modal-demo-link" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-primary modal-action-btn">
-                <i class="fas fa-external-link-alt"></i> <span id="modal-demo-label">Live Demo</span>
-              </a>
-            </div>
+            <!-- End of Project Details Content -->
 
           </div>
         </div>
@@ -810,6 +1050,13 @@
                 <a href="tel:+91 9075294905">+91 9075294905</a>
               </div>
             </div>
+            <div class="contact-item contact-item-whatsapp">
+              <div class="ci-icon ci-icon-whatsapp"><i class="fab fa-whatsapp"></i></div>
+              <div>
+                <strong>WhatsApp</strong>
+                <a href="https://wa.me/919075294905?text=Hello%20Pratiksha%2C%20I%20visited%20your%20portfolio%20and%20would%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener noreferrer" aria-label="Open WhatsApp chat with Pratiksha Dhere">+91 9075294905</a>
+              </div>
+            </div>
             <div class="contact-item">
               <div class="ci-icon"><i class="fas fa-map-marker-alt"></i></div>
               <div>
@@ -821,7 +1068,7 @@
               <div class="ci-icon"><i class="fab fa-linkedin-in"></i></div>
               <div>
                 <strong>LinkedIn</strong>
-                <a href="linkedin.com/in/pratiksha-dhere" target="_blank">linkedin.com/in/pratiksha-dhere</a>
+                <a href="https://linkedin.com/in/pratiksha-dhere" target="_blank">linkedin.com/in/pratiksha-dhere</a>
               </div>
             </div>
             <div class="contact-item">
@@ -832,30 +1079,84 @@
               </div>
             </div>
           </div>
+
+          <!-- WhatsApp Quick Direct Connect Card -->
+          <div class="whatsapp-action-card glass-card">
+            <div class="whatsapp-action-header">
+              <div class="whatsapp-badge-pill">
+                <span class="wa-status-dot"></span> Available on WhatsApp
+              </div>
+              <span class="whatsapp-subtext">Direct &amp; Instant Chat</span>
+            </div>
+            <a href="https://wa.me/919075294905?text=Hello%20Pratiksha%2C%20I%20visited%20your%20portfolio%20and%20would%20like%20to%20discuss%20a%20project." 
+               target="_blank" 
+               rel="noopener noreferrer" 
+               class="btn btn-whatsapp" 
+               id="whatsapp-direct-btn"
+               aria-label="Chat on WhatsApp with Pratiksha Dhere">
+              <i class="fab fa-whatsapp"></i>
+              <span>Chat on WhatsApp</span>
+              <i class="fas fa-arrow-right wa-arrow"></i>
+            </a>
+          </div>
         </div>
 
-        <!-- Right form (design only) -->
-        <div class="contact-form glass-card">
-          <div class="form-group">
-            <label for="name">Full Name</label>
-            <input type="text" id="name" name="name" placeholder="Your Name" />
+        <!-- Functional Interactive Contact Form -->
+        <form id="contact-form" class="contact-form glass-card" action="/api/contact" method="POST" novalidate>
+          <!-- Anti-spam Honeypot (hidden from human users) -->
+          <div style="display:none;" aria-hidden="true">
+            <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" />
           </div>
-          <div class="form-group">
-            <label for="email">Email Address</label>
-            <input type="email" id="email" name="email" placeholder="youremail@example.com" />
+
+          <div class="form-group" id="group-name">
+            <label for="name">Full Name <span class="req-star" aria-hidden="true">*</span></label>
+            <div class="input-wrap">
+              <i class="fas fa-user input-icon" aria-hidden="true"></i>
+              <input type="text" id="name" name="name" placeholder="Your Name" required autocomplete="name" maxlength="100" />
+            </div>
+            <span class="field-error-msg" id="name-error" aria-live="polite"></span>
           </div>
-          <div class="form-group">
-            <label for="subject">Subject</label>
-            <input type="text" id="subject" name="subject" placeholder="Project Discussion" />
+
+          <div class="form-group" id="group-email">
+            <label for="email">Email Address <span class="req-star" aria-hidden="true">*</span></label>
+            <div class="input-wrap">
+              <i class="fas fa-envelope input-icon" aria-hidden="true"></i>
+              <input type="email" id="email" name="email" placeholder="youremail@example.com" required autocomplete="email" maxlength="120" />
+            </div>
+            <span class="field-error-msg" id="email-error" aria-live="polite"></span>
           </div>
-          <div class="form-group">
-            <label for="message">Message</label>
-            <textarea id="message" name="message" rows="5" placeholder="Tell me about your project or idea..."></textarea>
+
+          <div class="form-group" id="group-subject">
+            <label for="subject">Subject <span class="req-star" aria-hidden="true">*</span></label>
+            <div class="input-wrap">
+              <i class="fas fa-tag input-icon" aria-hidden="true"></i>
+              <input type="text" id="subject" name="subject" placeholder="Project Discussion / Collaboration" required maxlength="150" />
+            </div>
+            <span class="field-error-msg" id="subject-error" aria-live="polite"></span>
           </div>
-          <button type="button" class="btn btn-primary btn-full">
-            <i class="fas fa-paper-plane"></i> Send Message
+
+          <div class="form-group" id="group-message">
+            <label for="message">Message <span class="req-star" aria-hidden="true">*</span></label>
+            <div class="input-wrap input-wrap-textarea">
+              <i class="fas fa-comment-dots input-icon" aria-hidden="true"></i>
+              <textarea id="message" name="message" rows="5" placeholder="Tell me about your project, timeline, or idea..." required minlength="10" maxlength="4000"></textarea>
+            </div>
+            <span class="field-error-msg" id="message-error" aria-live="polite"></span>
+          </div>
+
+          <!-- Status / Feedback Banner (Hidden by default, shown on result) -->
+          <div id="form-status" class="form-status" role="alert" aria-live="polite" style="display: none;"></div>
+
+          <button type="submit" id="contact-submit-btn" class="btn btn-primary btn-full submit-btn">
+            <span class="btn-spinner" aria-hidden="true"></span>
+            <i class="fas fa-paper-plane btn-icon" aria-hidden="true"></i>
+            <span class="btn-text">Send Message</span>
           </button>
-        </div>
+
+          <div class="form-footer-note">
+            <i class="fas fa-shield-alt"></i> Direct inbox delivery to <a href="mailto:pratikshadhere07@gmail.com">pratikshadhere07@gmail.com</a> &bull; Guaranteed response within 24 hours
+          </div>
+        </form>
       </div>
     </div>
   </section>
@@ -871,7 +1172,7 @@
 
         <div class="footer-brand">
           <a href="#home" class="nav-logo">
-            <span class="logo-sym">&lt;</span>pratiksha-dhere<span class="logo-sym">/&gt;</span>
+            <span class="logo-sym"></span>pratiksha-dhere<span class="logo-sym"></span>
           </a>
           <p>Crafting intelligent digital experiences through code, design, and AI. Let's shape the future together.</p>
           <div class="footer-socials">
@@ -925,6 +1226,6 @@
   </footer>
 
   <!-- Project Details & Interactive Subsystems -->
-  <script src="js/script.js"></script>
+  <script src="js/script.js?v=final3"></script>
 </body>
 </html>
